@@ -1,4 +1,4 @@
-Olá dev! Continuo estudando e aprendendo um pouco sobre o Nest e suas funcionalidades, e decidi implementar duas rotas, uma rota livre para todos usúarios e outra rota apenas para admin. 
+Hello Dev 😁! Continuo estudando e aprendendo um pouco sobre o NestJS e suas funcionalidades, e decidi estudar sobre passports e guards, assim implementei duas rotas de GET simples, onde uma rota é aberta a todos os usuários que tem um token válido, já na segunda rota apenas usuários que possuem Admin poderam acessar. Ainda está bem simples porém de maneira funcional! Espero que gostem ❤️ 
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
