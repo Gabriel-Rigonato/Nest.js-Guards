@@ -9,7 +9,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class AuthGuard implements CanActivate {
   constructor(private jwtService: JwtService,
     private readonly prisma: PrismaService,
-    private reflector: Reflector) {}
+    private reflector: Reflector) { }
 
 
   async canActivate(
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
         }
       );
       request['user'] = payload;
-    } catch(ex) {
+    } catch (ex) {
       throw new UnauthorizedException();
     }
     return true;

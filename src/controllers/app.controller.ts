@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Query, Res, UseGuards } from '@nest
 import CreateService from '../services/create.service';
 import IRequest from './interface.controller';
 import LoginService from '../auth/login.service';
-import { AuthGuard } from '../guardian/guardian.service';
+import { AuthGuard } from '../guards/guardian.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 

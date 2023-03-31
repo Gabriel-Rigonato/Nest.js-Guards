@@ -35,8 +35,8 @@ export default class LoginService {
             return {
                 access_token: await this.jwtService.signAsync(payload),
             };
-        } else { 
-            throw new Error ('User or Password was incorrect.')
+        } else {
+            throw new Error('User or Password was incorrect.')
         }
 
     }

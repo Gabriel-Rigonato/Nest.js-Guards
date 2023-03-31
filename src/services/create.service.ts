@@ -13,19 +13,18 @@ interface IRequest {
 export default class CreateService {
   constructor(private readonly prisma: PrismaService) { }
 
-  async create({name, email, password, isAdmin} : IRequest): Promise<any> {
+  async create({ name, email, password, isAdmin }: IRequest): Promise<any> {
 
     const hashedPassword = await bcrypt.hashSync(password, 10);
-     
-     const user = await this.prisma.user.create({
-      data:{
+
+    const user = await this.prisma.user.create({
+      data: {
         name: name,
         email: email,
         password: hashedPassword,
-        isAdmin: isAdmin 
+        isAdmin: isAdmin
       }
-     });
-     return user;
+    });
+    return user;
   }
 }
-
