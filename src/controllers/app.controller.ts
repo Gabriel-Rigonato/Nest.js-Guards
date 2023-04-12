@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query, Res, UseGuards } from '@nestjs/common';
-import CreateService from '../services/create.service';
-import IRequest from './interface.controller';
-import LoginService from '../auth/login.service';
+import CreateService from '../services/create-user.service';
+import IRequest from './interface/interface.controller';
+import LoginService from '../services/login.service';
 import { AuthGuard } from '../guards/guardian.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 

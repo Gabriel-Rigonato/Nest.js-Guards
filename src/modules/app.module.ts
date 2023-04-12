@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from '../controllers/app.controller';
-import CreateService from '../services/create.service';
+import CreateService from '../services/create-user.service';
 import { PrismaModule } from '../prisma/prisma.module';
-import LoginService from '../auth/login.service';
+import LoginService from '../services/login.service';
 import { JwtModule } from '@nestjs/jwt';
 import { LocalStrategy } from '../auth/local.strategy';
 import { PassportModule } from '@nestjs/passport';
