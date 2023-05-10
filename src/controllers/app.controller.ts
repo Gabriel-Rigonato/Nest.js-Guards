@@ -24,7 +24,7 @@ export class AppController {
   @Post('login')
   async loginUser(@Body() IRequest: IRequest): Promise<any> {
     const { email, password } = IRequest;
-
+    
     const login = await this.LoginService.login({ email, password });
 
     return login;
