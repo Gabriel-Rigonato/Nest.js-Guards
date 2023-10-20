@@ -4,33 +4,29 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import 'dotenv';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-
-interface IRequest {
-    email: string;
-    password: string;
-}
+import { AuthenticationDTO } from 'src/auth/dtos/authentication.dto';
 
 @Injectable()
-export default class LoginService {
+export default class AuthService {
 
     constructor(
         private readonly prisma: PrismaService,
         private jwtService: JwtService
     ) { }
 
-    async login({ email, password }: IRequest): Promise<any> {
+    async auth(authenticationDTO: AuthenticationDTO): Promise<any> {
 
         const userExists = await this.prisma.user.findFirst({
             where: {
-                email: email
+                email: authenticationDTO.email
             }
         })
 
-        const isValid = await bcrypt.compare(password, userExists.password);
+        const isValidPassword = await bcrypt.compare(authenticationDTO.password, userExists.password);
 
-        if (userExists && isValid) {
+        if (userExists && isValidPassword) {
 
-            const payload = { email: userExists.email, username: userExists.name, sub: userExists.id, isAdmin: userExists?.isAdmin };
+            const payload = { email: userExists.email, username: userExists.name, sub: userExists.id };
 
             return {
                 access_token: await this.jwtService.signAsync(payload),

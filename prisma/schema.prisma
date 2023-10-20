@@ -11,9 +11,38 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  password String
-  isAdmin Boolean @default(false)
+  id          Int           @id @default(autoincrement())
+  uuid        String        @unique @default(uuid())
+  email       String
+  name        String?
+  password    String
+  profile     PROFILE
+  user_access User_Access[]
+  access      Access[]
+}
+
+model Access {
+  id        Int           @id @default(autoincrement())
+  uuid      String        @unique @default(uuid())
+  end_point String
+  method    String
+  isTrue    Boolean
+  user_id   Int
+  user      User          @relation(fields: [user_id], references: [id])
+  access    User_Access[]
+}
+
+model User_Access {
+  id        Int    @id @default(autoincrement())
+  uuid      String @unique @default(uuid())
+  user_id   Int
+  access_id Int
+  access    Access @relation(fields: [access_id], references: [id])
+  user      User   @relation(fields: [user_id], references: [id])
+}
+
+enum PROFILE {
+  ADMIN
+  HR
+  OPERATIONAL
 }

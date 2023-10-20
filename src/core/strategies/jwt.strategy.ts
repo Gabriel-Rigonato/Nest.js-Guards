@@ -1,10 +1,16 @@
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable, ExecutionContext } from '@nestjs/common';
+import { FETCH_ACCESS_SERVICE_INTERFACE, IFetchAccessService } from 'src/access/interfaces/services/ifetch-access.service';
+
+import { Request } from 'express';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(
+    @Inject(FETCH_ACCESS_SERVICE_INTERFACE)
+    private readonly iFetchAccessService: IFetchAccessService
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -12,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: any) {
+  async validate(payload: any, context: ExecutionContext) {
 
     if (payload.isAdmin == false) {
 
