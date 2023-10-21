@@ -7,7 +7,6 @@ import CreateUserService from './services/create-user.service';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { AccessModule } from 'src/access/access.module';
 import { PassportModule } from '@nestjs/passport';
-import { HugoController } from './controllers/hugo.controller';
 
 
 @Module({
@@ -18,8 +17,7 @@ import { HugoController } from './controllers/hugo.controller';
     PassportModule
   ],
   controllers: [
-    UserController,
-    HugoController
+    UserController
   ],
 
   providers: [

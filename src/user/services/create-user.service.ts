@@ -8,14 +8,6 @@ import { UserEntity } from 'src/core/entities/user.entity';
 import { ICreateUserService } from '../interfaces/services/icreate-user.service';
 import { IUserRepository, USER_REPOSITORY_INTERFACE } from '../interfaces/repositories/iuser-repository';
 import { CREATE_ACCESS_SERVICE_INTERFACE, ICreateAccessService } from 'src/access/interfaces/services/icreate-access.service';
-import { access } from 'fs';
-
-interface IRequest {
-  name: string;
-  email: string;
-  password: string;
-  profile?: PROFILE;
-}
 
 @Injectable()
 export default class CreateUserService implements ICreateUserService {
