@@ -19,10 +19,11 @@ export class AccessRepository implements IAccessRepository {
     return access;
   }
 
-  async find(user_id: number, end_point: string): Promise<any> {
+  async find(user_id: number, end_point: string, method: string): Promise<any> {
     const access = await this.prisma.access.findFirst({
       where: {
         user_id: user_id,
+        method: method,
         end_point: {
           startsWith: end_point
         }

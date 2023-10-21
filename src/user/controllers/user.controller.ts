@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Put, Param, Post, Query, Res, UseGuards, Inject } from '@nestjs/common';
+import { Body, Controller, Get, Put, Param, Post, Query, Res, UseGuards, Inject, Delete } from '@nestjs/common';
 import CreateService from '../services/create-user.service';
 
 import { AuthGuard } from '../../core/guards/guardian.service';
@@ -24,7 +24,6 @@ export class UserController {
 
 
   @Get('/')
-  // @UseGuards(AuthGuard)
   @UseGuards(AccessGuard)
   async list(): Promise<void> {
 
@@ -32,7 +31,6 @@ export class UserController {
   }
 
   @Get('/:uuid')
-  // @UseGuards(AuthGuard)
   @UseGuards(AccessGuard)
   async teste(): Promise<void> {
 
@@ -40,15 +38,13 @@ export class UserController {
   }
 
   @Put('/')
-  // @UseGuards(JwtAuthGuard)
   @UseGuards(AccessGuard)
   async update(): Promise<void> {
 
     return console.log('Usuário administrador conectado.')
   }
 
-  @Put('/')
-  // @UseGuards(JwtAuthGuard)
+  @Delete('/')
   @UseGuards(AccessGuard)
   async delete(): Promise<void> {
 

@@ -31,7 +31,8 @@ export class AccessGuard implements CanActivate {
       }
     );
     request['user'] = payload;
-    const access = await this.iFetchAccessService.find(request['user'].sub, route.path);
+    const access = await this.iFetchAccessService.find(request['user'].sub, route.path, request.method);
+
 
     if (request.method === access.method) {
       if (access.isTrue === true) {
@@ -40,27 +41,7 @@ export class AccessGuard implements CanActivate {
         throw new UnauthorizedException();
       }
     }
-    if (request.method === access.method) {
-      if (access.isTrue === true) {
-        return true
-      } else {
-        throw new UnauthorizedException();
-      }
-    }
-    if (request.method === access.method) {
-      if (access.isTrue === true) {
-        return true
-      } else {
-        throw new UnauthorizedException();
-      }
-    }
-    if (request.method === access.method) {
-      if (access.isTrue === true) {
-        return true
-      } else {
-        throw new UnauthorizedException();
-      }
-    }
+
   }
 
   private extractTokenFromHeader(request: Request): string | undefined {
