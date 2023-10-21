@@ -1,4 +1,4 @@
-Estudando sobre nest e suas funcionalidades, criei essa API simples para autorizar permissões de acesso a rotas de diferentes tipos de usuários. Independemente do perfil aplicado ele pode ter diferente
+Estudando sobre nest e suas funcionalidades, criei essa API simples para autorizar permissões de acesso a rotas de diferentes tipos de usuários. Independemente do perfil aplicado ele pode ter diferentes
 funcionalidades. 
 
 <p align="center">
